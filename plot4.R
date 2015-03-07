@@ -3,6 +3,7 @@ power <- read.table("just_two_days.txt", sep = ";", header = TRUE, na.strings = 
 power$datetime <- strptime( paste(power$Date, power$Time, sep=" "),
                             "%d/%m/%Y %H:%M:%S")
 
+png(file="plot4.png", width=480, height=480)
 par(mfcol = c(2, 2))
 with(power, {
 
@@ -26,3 +27,4 @@ with(power, {
     plot(datetime, Global_reactive_power, type="n")
     lines(datetime, Global_reactive_power)
 })
+dev.off()
