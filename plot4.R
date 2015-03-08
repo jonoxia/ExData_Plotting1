@@ -1,9 +1,16 @@
+
+# Read in the data set:
 power <- read.table("just_two_days.txt", sep = ";", header = TRUE, na.strings = "?")
 
+# Combine the date and time into a single string and parse it into
+# an object representing both date and time:
 power$datetime <- strptime( paste(power$Date, power$Time, sep=" "),
                             "%d/%m/%Y %H:%M:%S")
 
+# Output to a png file:
 png(file="plot4.png", width=480, height=480)
+
+# Create a two x two matrix of plots, all from the same data frame:
 par(mfcol = c(2, 2))
 with(power, {
 
